@@ -5,6 +5,7 @@ import 'gbutton.dart';
 enum GnavStyle {
   google,
   oldSchool,
+  custom,
 }
 
 class GNav extends StatefulWidget {
@@ -95,6 +96,7 @@ class _GNavState extends State<GNav> {
             mainAxisAlignment: widget.mainAxisAlignment,
             children: widget.tabs
                 .map((t) => GButton(
+                      itemBuilder: t.itemBuilder,
                       textSize: widget.textSize,
                       style: widget.style,
                       key: t.key,

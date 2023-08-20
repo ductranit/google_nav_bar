@@ -30,6 +30,7 @@ class Button extends StatefulWidget {
     this.shadow,
     this.style = GnavStyle.google,
     this.textSize,
+    this.itemBuilder,
   }) : super(key: key);
 
   final IconData? icon;
@@ -56,6 +57,11 @@ class Button extends StatefulWidget {
   final List<BoxShadow>? shadow;
   final GnavStyle? style;
   final double? textSize;
+  final Widget Function(
+    AnimationController expandController,
+    bool expanded,
+    double curveValue,
+  )? itemBuilder;
 
   @override
   _ButtonState createState() => _ButtonState();
@@ -202,6 +208,9 @@ class _ButtonState extends State<Button> with TickerProviderStateMixin {
                         ),
                       ],
                     );
+                  } else if (widget.style == GnavStyle.custom) {
+                    return widget.itemBuilder!(
+                        expandController, _expanded, curveValue);
                   } else {
                     return Container();
                   }

@@ -33,6 +33,11 @@ class GButton extends StatefulWidget {
   final String? semanticLabel;
   final GnavStyle? style;
   final double? textSize;
+  final Widget Function(
+    AnimationController expandController,
+    bool expanded,
+    double curveValue,
+  )? itemBuilder;
 
   const GButton({
     Key? key,
@@ -64,6 +69,7 @@ class GButton extends StatefulWidget {
     this.semanticLabel,
     this.style = GnavStyle.google,
     this.textSize,
+    this.itemBuilder,
   }) : super(key: key);
 
   @override
@@ -110,6 +116,7 @@ class _GButtonState extends State<GButton> {
                 color: widget.textColor,
               ),
         ),
+        itemBuilder: widget.itemBuilder,
       ),
     );
   }
